@@ -28,8 +28,23 @@ $routes->set404Override();
  */
 
 // We get a performance increase by specifying the default
+$routes->get(
+    'create-db',
+    function () {
+        $forge = \Config\Database::forge();
+
+        if ($forge->createDatabase('yuknikah')) {
+            echo 'Database created!';
+        }
+    }
+);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+// $routes->addRedirect('/', 'home');
+$routes->get('gawe', 'Gawe::index');
+$routes->get('gawe/add', 'Gawe::create');
+$routes->post('gawe', 'Gawe::store');
+$routes->get('gawe/edit/(:any)', 'Gawe::edit/$1');
 
 /*
  * --------------------------------------------------------------------
