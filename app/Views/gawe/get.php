@@ -60,7 +60,12 @@
                                 </td>
                                 <td class="text-center" style="width:15%">
                                     <a href="<?= site_url('gawe/edit/' . $value->id_gawe) ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                    <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                    <form action="<?= site_url(('gawe/' . $value->id_gawe)) ?>" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
