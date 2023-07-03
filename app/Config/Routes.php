@@ -38,9 +38,15 @@ $routes->get(
         }
     }
 );
+
+$routes->get('login', 'Auth::login');
+$routes->get('auth', 'Auth::index');
+$routes->post('auth/loginProcess', 'Auth::LoginProcess');
+
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/generate', 'Home::generate');
+$routes->get('/auth/login', 'Auth::login');
 // $routes->addRedirect('/', 'home');
 $routes->get('gawe', 'Gawe::index');
 $routes->get('gawe/add', 'Gawe::create');
